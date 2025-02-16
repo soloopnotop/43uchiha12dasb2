@@ -1,0 +1,624 @@
+
+body {
+    background-color: #000000;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 30px;
+    width: 80%;
+    max-width: 1200px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 20px auto;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+header.scrolled {
+    transform: translateY(-5px) ;
+  
+}
+
+
+.testimonials {
+    background-color: #000000; 
+    padding: 50px 20px; 
+    text-align: center; 
+}
+
+.testimonials h2 {
+    font-size: 30px; 
+    margin-bottom: 20px; 
+    color: #ffffff; 
+}
+
+.testimonials p {
+    font-size: 1em; 
+    color: #ffffff; 
+    margin-bottom: 40px;
+}
+
+.testimonial-slider {
+    position: relative; 
+    overflow: hidden; 
+    height: 200px; 
+}
+
+.testimonial-box {
+    position: absolute; 
+    width: 100%; 
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.testimonial-box.active {
+    opacity: 1; 
+}
+
+.user-logo {
+    width: 100px;
+    height: 100px; 
+    border-radius: 50%; 
+    margin-bottom: 10px; 
+}
+
+.user-name {
+    display: block;
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+
+@keyframes slide {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.logo {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.logo i {
+    font-size: 1.5rem; 
+    color: #ff0000;
+}
+
+.logo img {
+    width: 25px; 
+    height: 25px;
+}
+
+nav {
+    margin-left: 10px; 
+}
+
+nav ul {
+    display: flex;
+    gap: 20px; 
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-family: system-ui, sans-serif;
+    transition: color 0.3s;
+}
+
+
+nav ul li:not(.dropdown) > a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(to right, #ff4e50, #f9d423);
+    transition: width 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li:not(.dropdown) > a.active::after {
+    width: 100%; 
+}
+
+
+nav ul li:not(.dropdown) > a:hover::after {
+    width: 100%;
+}
+
+
+
+.client-area, 
+.dropdown-menu a {
+    position: relative;
+    text-decoration: none;
+    transition: none;
+}
+
+.client-area::after,
+.dropdown-menu a::after {
+    content: none !important; 
+}
+
+
+
+nav ul {
+    display: flex;
+    align-items: center; 
+}
+
+
+nav ul li.dropdown {
+    position: relative;
+}
+
+nav ul li.dropdown .client-area {
+    background: rgb(255, 0, 0);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav ul li.dropdown .arrow {
+    transition: transform 0.3s ease;
+}
+
+nav ul li .dropdown-menu {
+    position: absolute;
+    top: 110%; 
+    left: -40px; 
+    background: black; 
+    border-radius: 5px;
+    display: none; 
+    flex-direction: column;
+    width: max-content; 
+    min-width: 180px; 
+    padding: 4px 0;
+    z-index: 999;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+nav ul li .dropdown-menu li {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li .dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s;
+
+}
+
+nav ul li .dropdown-menu li a:hover {
+    background: rgba(43, 43, 43, 0.363);
+}
+
+
+nav ul li.dropdown.active .dropdown-menu {
+    display: block;
+}
+
+
+nav ul li.dropdown.active .arrow {
+    transform: rotate(180deg); 
+}
+.hamburger {
+    display: none; 
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute; 
+    top: 13px; 
+    right: 30px; 
+}
+
+.bar {
+    height: 2px;
+    width: 18px;
+    background-color: white;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+    nav ul {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        
+        background: rgb(0, 0, 0); 
+        backdrop-filter: blur(15px); 
+        -webkit-backdrop-filter: blur(15px);
+    
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    
+        padding: 10px 0;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    nav ul li a {
+        text-decoration: none; 
+        -webkit-tap-highlight-color: transparent; 
+        outline: none; 
+    }
+    
+    nav ul li:not(.dropdown) > a::after {
+        content: none !important;
+    }
+    nav ul.active {
+        opacity: 1; 
+        visibility: visible; 
+        transform: translateY(0); 
+    }
+
+    .hamburger {
+        display: flex; 
+        text-decoration: none; 
+        -webkit-tap-highlight-color: transparent; 
+        outline: none; 
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start; 
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+  
+    .dropdown {
+        display: none; 
+    }
+
+
+    .mobile-client-links {
+        display: block;
+    }
+}
+
+
+@media (min-width: 769px) {
+    .mobile-client-links {
+        display: none !important;
+    }
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.server-status, .live-users {
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: red;
+    animation: pulse 1.5s infinite;
+}
+
+.footer-icon i {
+    font-size: 2rem;
+    color: #ff0004;
+    animation: glow 1.5s infinite alternate;
+}
+
+.footer-credit {
+    margin-top: 10px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+.live-users i {
+    color: #ffa4a5; 
+}
+#onlineCount {
+    color: rgb(201, 255, 201); 
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px; 
+    margin-top: -50px; 
+}
+
+
+.hero h1 {
+    font-size: 50px; 
+    font-weight: bold;
+    letter-spacing: 2px; 
+    color: transparent; 
+    background: linear-gradient(45deg, #ff0000, #ff4d4d);
+    -webkit-background-clip: text;
+    
+}
+
+#particles-js {
+    position: fixed;  
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;  
+}
+
+
+.hero p {
+    font-size: 20px; 
+    color: #ddd;
+    margin-top: -20px;
+    max-width: 600px; 
+    margin-left: auto;
+    margin-right: auto;
+       font-family: system-ui, sans-serif;
+
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 15px 23px; 
+    text-decoration: none;
+    border-radius: 8px; 
+    font-size: 15px;
+    
+    display: inline-block;
+    transition: all 0.3s ease; 
+    margin: 0 5px; 
+}
+
+.primary {
+    background-color: #ff0000;
+    color: white;
+   
+    border: 2px solid #ff0000;
+}
+
+.primary:hover {
+    background-color: #8b0000; 
+    border: 2px solid #8b0000; 
+}
+
+.secondary {
+    border: 2px solid #ff0000; 
+    color: #ffffff;
+}
+
+.secondary:hover {
+    background-color: #ff000013;
+    color: white;
+}
+
+.feature-box {
+    background-color: #aa0000;
+    padding: 7px;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.features {
+    text-align: center;
+    padding: 70px 15px;
+}
+
+.features h2 {
+    font-size: 30px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 27px;
+    padding: 12px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.feature-box h3 {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-box i {
+    font-size: 3rem; 
+    color: #ebebeb; 
+    margin-bottom: 10px; 
+}
+
+.feature-box h3 {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.feature-box p {
+    color: #ccc;
+    font-size: 0.85rem;
+}
+
+
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto; 
+        padding: 10px 20px;
+        justify-content: flex-start; 
+    }
+
+    .logo {
+        font-size: 1rem; 
+        align-self: flex-start; 
+    }
+    
+
+
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: left; 
+        font-size: 1.5rem;
+        padding-left: 30px; 
+    }
+
+    .testimonials h2 {
+        font-size: 24px; 
+    }
+
+    .testimonials p {
+        font-size: 0.9em; 
+    }
+
+    .testimonial-slider {
+        height: 150px;
+    }
+
+    .hero h1 {
+        font-size: 36px; 
+    }
+
+    .hero p {
+        font-size: 18px; 
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .btn {
+        width: 70%; 
+        margin: 10px 0; 
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+    }
+
+    .footer-container {
+        flex-direction: column; 
+    }
+
+    .footer-icon i {
+        font-size: 1.5rem; 
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 10px 20px; 
+        justify-content: flex-start; 
+    }
+
+    .logo {
+        font-size: 1.1rem; 
+        align-self: flex-start; 
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    .testimonials h2 {
+        font-size: 28px; 
+    }
+
+    .testimonials p {
+        font-size: 1em; 
+    }
+
+    .hero h1 {
+        font-size: 42px; 
+    }
+
+    .hero p {
+        font-size: 19px; 
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
